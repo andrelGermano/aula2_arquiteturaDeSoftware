@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processador de Texto - Pipe e Filtros</title>
+</head>
+
+<body>
+
+    <h2>Processador de Texto</h2>
+
+    <!-- Interface de entrada -->
+    <textarea id="textoEntrada" rows="4" cols="50" placeholder="Digite seu texto aqui..."></textarea><br><br>
+
+    <button onclick="processarTexto()">Processar Texto</button><br><br>
+
+    <!-- Exibe o texto processado -->
+    <h3>Texto Processado:</h3>
+    <div id="textoSaida"></div>
+
+    <!-- Exibe a contagem de palavras -->
+    <h3>Contagem de Palavras:</h3>
+    <div id="contagemPalavras"></div>
+
+    <script>
+        // Função que aplica os filtros em sequência
+        function processarTexto() {
+            // Obtém o texto inserido pelo usuário
+            var texto = document.getElementById('textoEntrada').value;
+
+            // Aplica os filtros
+            texto = filtroMaiusculas(texto);
+            texto = filtroRemoverEspacos(texto);
+            var contagem = filtroContarPalavras(texto);
+
+            // Exibe o texto processado
+            document.getElementById('textoSaida').innerText = texto;
+
+            // Exibe a contagem de palavras
+            document.getElementById('contagemPalavras').innerText = 'Número de palavras: ' + contagem;
+        }
+
+        // Filtro 1: Converter o texto para letras maiúsculas
+        function filtroMaiusculas(texto) {
+            return texto.toUpperCase();
+        }
+
+        // Filtro 2: Remover espaços extras
+        function filtroRemoverEspacos(texto) {
+            return texto.trim().replace(/\s+/g, ' ');
+        }
+
+        // Filtro 3: Contar o número de palavras
+        function filtroContarPalavras(texto) {
+            if (texto.trim() === '') {
+                return 0;
+            }
+            return texto.split(' ').length;
+        }
+    </script>
+
+</body>
+
+</html>

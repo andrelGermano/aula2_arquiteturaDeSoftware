@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+</head>
+
+<body>
+
+    <h2>Conversor de Temperatura</h2>
+    <label for="celsius">Temperatura em Celsius:</label>
+    <input type="number" id="celsius" placeholder="Digite o valor em Celsius">
+    <button onclick="converter()">Converter para Fahrenheit</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function converter() {
+            // Obtém o valor digitado pelo usuário
+            var celsius = document.getElementById('celsius').value;
+
+            // Verifica se o valor é válido
+            if (celsius === '') {
+                alert('Por favor, insira um valor válido!');
+                return;
+            }
+
+            // Conversão de Celsius para Fahrenheit
+            var fahrenheit = (celsius * 9 / 5) + 32;
+
+            // Exibe o resultado na página
+            document.getElementById('resultado').innerHTML = celsius + '°C = ' + fahrenheit.toFixed(2) + '°F';
+        }
+    </script>
+
+</body>
+
+</html>

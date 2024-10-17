@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuários</title>
+</head>
+
+<body>
+
+    <h2>Cadastro de Usuários</h2>
+
+    <!-- Camada de Apresentação: Formulário para inserir dados -->
+    <form id="userForm" onsubmit="cadastrarUsuario(event)">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" placeholder="Digite o nome"><br><br>
+
+        <label for="idade">Idade:</label><br>
+        <input type="number" id="idade" placeholder="Digite a idade"><br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <!-- Exibe os usuários cadastrados -->
+    <h3>Usuários Cadastrados:</h3>
+    <ul id="listaUsuarios"></ul>
+
+    <script>
+        // Camada de Persistência: Array para armazenar usuários
+        var usuarios = [];
+
+        // Camada de Lógica de Negócios: Função para validar e cadastrar o usuário
+        function cadastrarUsuario(event) {
+            event.preventDefault();  // Evita o recarregamento da página
+
+            // Obtém os dados do formulário
+            var nome = document.getElementById('nome').value;
+            var idade = document.getElementById('idade').value;
+
+            // Validação: Verifica se o nome e a idade foram preenchidos e se a idade é maior que 18
+            if (nome === '' || idade === '') {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            if (idade < 18) {
+                alert('Usuário deve ter mais de 18 anos para ser cadastrado.');
+                return;
+            }
+
+            // Camada de Persistência: Armazena o usuário no array
+            var usuario = {
+                nome: nome,
+                idade: idade
+            };
+            usuarios.push(usuario);
+
+            // Atualiza a interface para mostrar os usuários cadastrados
+            atualizarListaUsuarios();
+
+            // Limpa o formulário após o cadastro
+            document.getElementById('userForm').reset();
+        }
+
+        // Função para atualizar a lista de usuários cadastrados na tela
+        function atualizarListaUsuarios() {
+            var lista = document.getElementById('listaUsuarios');
+            lista.innerHTML = '';  // Limpa a lista antes de atualizá-la
+
+            // Exibe os usuários cadastrados
+            usuarios.forEach(function (usuario, index) {
+                var li = document.createElement('li');
+                li.textContent = `Nome: ${usuario.nome}, Idade: ${usuario.idade}`;
+                lista.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
