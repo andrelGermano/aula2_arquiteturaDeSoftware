@@ -1,27 +1,29 @@
 # aula2_arquiteturaDeSoftware
 
-# Aplicação Monolítica vs Arquiteturas em Camadas e Pipe e Filtros
+### 1. Quais são as principais desvantagens de concentrar toda a lógica, interface e dados em um único arquivo?
 
-## Desvantagens de Concentrar Tudo em um Arquivo
+- **Manutenção complicada**: Conforme o código vai crescendo, fica uma bagunça e muito mais difícil de entender ou alterar.
+- **Reaproveitamento de código**: Sem separação, é difícil reutilizar funcionalidades em outros projetos ou partes do sistema.
+- **Escalabilidade ruim**: Pequenas mudanças podem causar problemas em várias partes do sistema.
+- **Testes complicados**: Testar funcionalidades específicas fica difícil, já que está tudo junto.
+- **Trabalho em equipe**: Quando várias pessoas mexem no mesmo arquivo, os conflitos de código são frequentes.
 
-- **Manutenção complicada**: Quando o código cresce, fica bagunçado e super difícil de entender e mexer depois.
-- **Nada de reutilizar código**: Como tá tudo misturado, você acaba duplicando código em vez de reaproveitar.
-- **Escalabilidade? Quase zero**: Qualquer mudança, mesmo pequena, pode quebrar tudo.
-- **Testes são um pesadelo**: Testar uma parte do código sem interferir em outra é quase impossível.
-- **Trabalho em equipe? Nem rola**: Todo mundo mexendo no mesmo arquivo gera conflito o tempo todo.
+---
 
-## Por que Separar em Camadas?
+### 2. Como a separação em camadas facilita a manutenção e a escalabilidade da aplicação?
 
-- **Organização top**: Tudo fica mais claro e organizado, cada parte tem sua função.
-- **Manutenção fácil**: Mudar uma parte da aplicação sem mexer em outra é super tranquilo.
-- **Reaproveitamento de código**: Dá pra reutilizar a lógica de uma camada em várias partes.
-- **Testes mais tranquilos**: Como cada camada é separada, dá pra testar tudo de boa.
-- **Facilita o crescimento**: Dá pra escalar e melhorar o sistema sem medo, e várias pessoas podem trabalhar juntas numa boa.
+- **Organização melhor**: O código fica mais limpo e fácil de entender, com cada parte (interface, lógica, dados) bem definida.
+- **Manutenção tranquila**: Dá pra alterar uma parte do sistema sem causar problemas em outras.
+- **Reutilização de componentes**: Funções e regras podem ser reaproveitadas em outros lugares.
+- **Testes mais fáceis**: Cada camada pode ser testada isoladamente.
+- **Escalabilidade e colaboração**: É mais fácil escalar e times diferentes podem trabalhar em partes específicas sem pisar no código dos outros.
 
-## Benefícios da Arquitetura Pipe e Filtros
+---
 
-- **Modularidade**: Cada filtro faz só uma coisa, e você pode trocar ou adicionar novos filtros fácil, fácil.
-- **Flexibilidade máxima**: Dá pra combinar e rearranjar os filtros do jeito que quiser.
-- **Reutilização dos filtros**: Um filtro que remove espaços pode ser usado em várias partes do sistema.
-- **Manutenção de boa**: Precisa de uma nova transformação? Só criar mais um filtro e pronto.
-- **Testabilidade**: Testar um filtro por vez deixa o sistema mais confiável e menos propenso a bugs.
+### 3. Quais são os principais benefícios da arquitetura Pipe e Filtros para sistemas que precisam de flexibilidade nas transformações de dados?
+
+- **Modularidade**: Cada filtro é uma função independente, fácil de adicionar ou remover.
+- **Flexibilidade**: Os filtros podem ser combinados e rearranjados conforme necessário.
+- **Reutilização**: Filtros podem ser usados em diferentes partes do sistema.
+- **Fácil manutenção**: Novos filtros podem ser criados e encaixados na sequência sem quebrar o sistema.
+- **Testes isolados**: Dá pra testar cada filtro separadamente, facilitando a identificação de problemas.
